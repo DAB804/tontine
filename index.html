@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Ma Tontine</title>
+
+    <link
+        rel="stylesheet"
+        href="APPO.CSS"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo-area">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-users"></i>
+            </div>
+
+            <div>
+
+                <h1>Tontine</h1>
+
+                <span>
+                    Admin : Ousmane Dabo
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="role-display">
+
+            <span>
+                Mode actuel
+            </span>
+
+            <strong id="currentModeLabel">
+                Administrateur
+            </strong>
+
+        </div>
+
+
+        <!-- =================================================
+             MENU ADMIN
+        ================================================== -->
+
+        <nav
+            id="adminNavigation"
+            class="navigation"
+        >
+
+            <p class="navigation-title">
+                ADMINISTRATION
+            </p>
+
+
+            <a
+                href="#"
+                class="menu-item active"
+                data-page="dashboard"
+            >
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                <span>
+                    Tableau de bord
+                </span>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="menu-item"
+                data-page="cotisations"
+            >
+
+                <i class="fa-solid fa-money-bill-wave"></i>
+
+                <span>
+                    Cotisations
+                </span>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="menu-item"
+                data-page="versements"
+            >
+
+                <i class="fa-solid fa-gift"></i>
+
+                <span>
+                    Versements
+                </span>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="menu-item"
+                data-page="participants"
+            >
+
+                <i class="fa-solid fa-user-group"></i>
+
+                <span>
+                    Participants
+                </span>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="menu-item"
+                data-page="historique"
+            >
+
+                <i class="fa-solid fa-clock-rotate-left"></i>
+
+                <span>
+                    Historique
+                </span>
+
+            </a>
+
+        </nav>
+
+
+
+        <!-- =================================================
+             MENU PARTICIPANT
+        ================================================== -->
+
+        <nav
+            id="participantNavigation"
+            class="navigation hidden"
+        >
+
+            <p class="navigation-title">
+                ESPACE PARTICIPANT
+            </p>
+
+
+            <a
+                href="#"
+                class="participant-menu-item active"
+                data-participant-page="participant-home"
+            >
+
+                <i class="fa-solid fa-house"></i>
+
+                <span>
+                    Mon espace
+                </span>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="participant-menu-item"
+                data-participant-page="participant-info"
+            >
+
+                <i class="fa-solid fa-circle-info"></i>
+
+                <span>
+                    Informations
+                </span>
+
+            </a>
+
+        </nav>
+
+
+
+        <div class="sidebar-bottom">
+
+            <button
+                id="switchModeButton"
+                class="mode-button"
+                type="button"
+            >
+
+                <i class="fa-solid fa-user-group"></i>
+
+                <span>
+                    Passer en mode participant
+                </span>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         CONTENU PRINCIPAL
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             HEADER
+        ================================================== -->
+
+        <header class="topbar">
+
+            <div>
+
+                <p class="topbar-small">
+                    Tontine 2026
+                </p>
+
+                <h2 id="pageTitle">
+                    Tableau de bord
+                </h2>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <select
+                    id="monthSelector"
+                    class="month-selector"
+                ></select>
+
+
+                <div class="role-badge">
+
+                    <i class="fa-solid fa-user-shield"></i>
+
+                    <span id="roleBadgeText">
+                        Administrateur
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             ESPACE ADMINISTRATEUR
+        ================================================== -->
+
+        <section id="adminArea">
+
+
+            <!-- ================= DASHBOARD ================= -->
+
+            <div
+                id="dashboardPage"
+                class="page-section"
+            >
+
+
+                <div class="welcome-box">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            ADMINISTRATION
+                        </span>
+
+                        <h3>
+                            Bonjour Ousmane Dabo 👋
+                        </h3>
+
+                        <p>
+                            Gérez les cotisations,
+                            les versements et
+                            les bénéficiaires de la tontine.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- STATISTIQUES -->
+
+                <div class="stats-grid">
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Total à collecter
+                            </span>
+
+                            <strong id="totalToCollect">
+                                2 400 €
+                            </strong>
+
+                            <small>
+                                8 × 300 €
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Total collecté
+                            </span>
+
+                            <strong id="totalCollected">
+                                2 400 €
+                            </strong>
+
+                            <small id="collectedStat">
+                                8 / 8 participants
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-hourglass-half"></i>
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Reste à collecter
+                            </span>
+
+                            <strong id="remainingAmount">
+                                0 €
+                            </strong>
+
+                            <small id="waitingStat">
+                                0 participants
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon">
+                            <i class="fa-solid fa-gift"></i>
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Prochain versement
+                            </span>
+
+                            <strong id="nextPaymentAmount">
+                                2 400 €
+                            </strong>
+
+                            <small>
+                                Montant prévu
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PROGRESSION -->
+
+                <div class="content-card">
+
+                    <div class="section-header">
+
+                        <div>
+
+                            <span class="eyebrow">
+                                SUIVI
+                            </span>
+
+                            <h3 id="progressTitle">
+                                Cotisations de septembre
+                            </h3>
+
+                        </div>
+
+
+                        <strong
+                            id="progressNumber"
+                            class="progress-number"
+                        >
+                            100%
+                        </strong>
+
+                    </div>
+
+
+                    <div class="progress-bar">
+
+                        <div
+                            id="progressValue"
+                            class="progress-value"
+                            style="width: 100%;"
+                        ></div>
+
+                    </div>
+
+
+                    <div class="progress-footer">
+
+                        <span id="progressReceived">
+                            2 400 € reçus
+                        </span>
+
+                        <span id="progressGoal">
+                            2 400 € objectif
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PARTICIPANTS -->
+
+                <div class="two-columns">
+
+
+                    <div class="content-card">
+
+                        <div class="section-header">
+
+                            <div>
+
+                                <span class="eyebrow">
+                                    COTISATIONS
+                                </span>
+
+                                <h3>
+                                    Participants payés
+                                </h3>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            id="paidContainer"
+                            class="participant-list"
+                        ></div>
+
+                    </div>
+
+
+
+                    <div class="content-card">
+
+                        <div class="section-header">
+
+                            <div>
+
+                                <span class="eyebrow">
+                                    À SUIVRE
+                                </span>
+
+                                <h3>
+                                    Participants non payés
+                                </h3>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            id="unpaidContainer"
+                            class="participant-list"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- BENEFICIAIRES -->
+
+                <div class="content-card">
+
+                    <div class="section-header">
+
+                        <div>
+
+                            <span class="eyebrow">
+                                VERSEMENTS
+                            </span>
+
+                            <h3>
+                                Bénéficiaires
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="beneficiaryDisplay"
+                        class="beneficiary-list"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= COTISATIONS ================= -->
+
+            <div
+                id="cotisationsPage"
+                class="page-section"
+                style="display:none;"
+            >
+
+                <div class="page-intro">
+
+                    <span class="eyebrow">
+                        ADMINISTRATION
+                    </span>
+
+                    <h3>
+                        Gestion des cotisations
+                    </h3>
+
+                    <p>
+                        Cochez les participants
+                        ayant réglé leur cotisation
+                        de 300 €.
+                    </p>
+
+                </div>
+
+
+                <div class="two-columns">
+
+
+                    <div class="content-card">
+
+                        <div class="section-header">
+
+                            <div>
+
+                                <h3>
+                                    Participants payés
+                                </h3>
+
+                                <span id="cotisationPaidCount">
+                                    0 participants
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            id="cotisationPaidContainer"
+                            class="participant-list"
+                        ></div>
+
+                    </div>
+
+
+
+                    <div class="content-card">
+
+                        <div class="section-header">
+
+                            <div>
+
+                                <h3>
+                                    Participants non payés
+                                </h3>
+
+                                <span id="cotisationUnpaidCount">
+                                    0 participants
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            id="cotisationUnpaidContainer"
+                            class="participant-list"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= VERSEMENTS ================= -->
+
+            <div
+                id="versementsPage"
+                class="page-section"
+                style="display:none;"
+            >
+
+                <div class="page-intro">
+
+                    <span class="eyebrow">
+                        VERSEMENTS
+                    </span>
+
+                    <h3>
+                        Gestion des bénéficiaires
+                    </h3>
+
+                    <p>
+                        Définissez le bénéficiaire
+                        de chaque mois.
+                    </p>
+
+                </div>
+
+
+
+                <div class="content-card">
+
+                    <div class="form-group">
+
+                        <label for="beneficiarySelector">
+                            Bénéficiaire de septembre 2026
+                        </label>
+
+                        <select
+                            id="beneficiarySelector"
+                            class="form-select"
+                        ></select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="versementSelector">
+                            Prochain bénéficiaire —
+                            octobre 2026
+                        </label>
+
+                        <select
+                            id="versementSelector"
+                            class="form-select"
+                        ></select>
+
+                    </div>
+
+                </div>
+
+
+
+                <div
+                    id="versementBeneficiary"
+                    class="content-card"
+                ></div>
+
+            </div>
+
+
+
+            <!-- ================= PARTICIPANTS ================= -->
+
+            <div
+                id="participantsPage"
+                class="page-section"
+                style="display:none;"
+            >
+
+                <div class="page-intro">
+
+                    <span class="eyebrow">
+                        GROUPE
+                    </span>
+
+                    <h3>
+                        Les participants
+                    </h3>
+
+                    <p>
+                        Vue complète réservée
+                        à l'administrateur.
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="allParticipantsContainer"
+                    class="participant-grid"
+                ></div>
+
+            </div>
+
+
+
+            <!-- ================= HISTORIQUE ================= -->
+
+            <div
+                id="historiquePage"
+                class="page-section"
+                style="display:none;"
+            >
+
+                <div class="page-intro">
+
+                    <span class="eyebrow">
+                        HISTORIQUE
+                    </span>
+
+                    <h3>
+                        Historique de la tontine
+                    </h3>
+
+                    <p>
+                        Consultez les versements passés
+                        et préparez les prochains mois.
+                    </p>
+
+                </div>
+
+
+
+                <div class="content-card">
+
+                    <div class="section-header">
+
+                        <div>
+
+                            <span class="eyebrow">
+                                PLANNING
+                            </span>
+
+                            <h3>
+                                Bénéficiaires des prochains mois
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="upcomingScheduleContainer"
+                        class="schedule-list"
+                    ></div>
+
+                </div>
+
+
+
+                <div class="content-card">
+
+                    <div class="section-header">
+
+                        <div>
+
+                            <span class="eyebrow">
+                                DÉTAIL
+                            </span>
+
+                            <h3>
+                                Historique des versements
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="historyDetailedContainer"
+                        class="history-list"
+                    ></div>
+
+                </div>
+
+
+                <div
+                    id="historyContainer"
+                    style="display:none;"
+                ></div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ESPACE PARTICIPANT
+        ================================================== -->
+
+        <section
+            id="participantArea"
+            class="hidden"
+        >
+
+
+            <!-- =================================================
+                 MON ESPACE
+            ================================================== -->
+
+            <div
+                id="participantHomePage"
+                class="page-section"
+            >
+
+                <div class="welcome-box">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            ESPACE PARTICIPANT
+                        </span>
+
+                        <h3>
+                            Bienvenue dans votre espace 👋
+                        </h3>
+
+                        <p>
+                            Retrouvez les informations
+                            générales de la tontine.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- SUIVI GÉNÉRAL -->
+
+                <div
+                    id="participantPaymentStatus"
+                    class="payment-status paid-status"
+                >
+
+                    <i class="fa-solid fa-check"></i>
+
+                    Suivi général des cotisations
+
+                </div>
+
+
+
+                <!-- DATE LIMITE -->
+
+                <div class="content-card">
+
+                    <div class="section-header">
+
+                        <div>
+
+                            <span class="eyebrow">
+                                COTISATION
+                            </span>
+
+                            <h3>
+                                Date limite
+                            </h3>
+
+                        </div>
+
+                        <div>
+                            <i class="fa-solid fa-calendar-days"></i>
+                        </div>
+
+                    </div>
+
+
+                    <div class="public-beneficiary">
+
+                        <div>
+
+                            <span>
+                                Date limite de cotisation
+                            </span>
+
+                            <strong>
+                                Le 15 de chaque mois
+                            </strong>
+
+                            <small>
+                                Merci d’effectuer votre cotisation
+                                avant ou au plus tard le 15.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     VERSEMENT DU MOIS / PROCHAIN VERSEMENT
+                ================================================== -->
+
+                <div class="two-columns">
+
+
+                    <!-- VERSEMENT DU MOIS -->
+
+                    <div class="content-card">
+
+                        <div class="section-header">
+
+                            <div>
+
+                                <span class="eyebrow">
+                                    SEPTEMBRE 2026
+                                </span>
+
+                                <h3>
+                                    Versement du mois
+                                </h3>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            id="participantCurrentBeneficiary"
+                            class="public-beneficiary"
+                        ></div>
+
+                    </div>
+
+
+
+                    <!-- PROCHAIN VERSEMENT -->
+
+                    <div class="content-card">
+
+                        <div class="section-header">
+
+                            <div>
+
+                                <span class="eyebrow">
+                                    OCTOBRE 2026
+                                </span>
+
+                                <h3>
+                                    Prochain versement
+                                </h3>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            id="participantNextBeneficiary"
+                            class="public-beneficiary"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     PLANNING PUBLIC
+                ================================================== -->
+
+                <div class="content-card">
+
+                    <div class="section-header">
+
+                        <div>
+
+                            <span class="eyebrow">
+                                PLANNING
+                            </span>
+
+                            <h3>
+                                Prochains bénéficiaires
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="participantUpcomingSchedule"
+                        class="public-schedule-list"
+                    ></div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     HISTORIQUE PUBLIC
+                ================================================== -->
+
+                <div class="content-card">
+
+                    <div class="section-header">
+
+                        <div>
+
+                            <span class="eyebrow">
+                                HISTORIQUE
+                            </span>
+
+                            <h3>
+                                Historique des versements
+                            </h3>
+
+                            <p>
+                                Les versements sont visibles
+                                sans afficher les paiements individuels.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="public-schedule-list">
+
+
+                        <!-- SEPTEMBRE -->
+
+                        <div class="public-schedule-item">
+
+                            <div>
+
+                                <span>
+                                    Septembre 2026
+                                </span>
+
+                                <strong>
+                                    Bénéficiaire :
+                                    <span id="publicHistorySeptember">
+                                        À définir
+                                    </span>
+                                </strong>
+
+                                <small>
+                                    Date limite :
+                                    15 septembre 2026
+                                </small>
+
+                            </div>
+
+                            <span>
+                                2 400 €
+                            </span>
+
+                        </div>
+
+
+
+                        <!-- OCTOBRE -->
+
+                        <div class="public-schedule-item">
+
+                            <div>
+
+                                <span>
+                                    Octobre 2026
+                                </span>
+
+                                <strong>
+                                    Bénéficiaire :
+                                    <span id="publicHistoryOctober">
+                                        À définir
+                                    </span>
+                                </strong>
+
+                                <small>
+                                    Date limite :
+                                    15 octobre 2026
+                                </small>
+
+                            </div>
+
+                            <span>
+                                2 400 €
+                            </span>
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 INFORMATIONS
+            ================================================== -->
+
+            <div
+                id="participantInfoPage"
+                class="page-section"
+                style="display:none;"
+            >
+
+                <div class="page-intro">
+
+                    <span class="eyebrow">
+                        INFORMATIONS
+                    </span>
+
+                    <h3>
+                        Fonctionnement de la tontine
+                    </h3>
+
+                </div>
+
+
+
+                <div class="info-grid">
+
+
+                    <div class="info-card">
+
+                        <i class="fa-solid fa-euro-sign"></i>
+
+                        <strong>
+                            300 €
+                        </strong>
+
+                        <span>
+                            Cotisation mensuelle
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="info-card">
+
+                        <i class="fa-solid fa-gift"></i>
+
+                        <strong>
+                            2 400 €
+                        </strong>
+
+                        <span>
+                            Versement mensuel
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="info-card">
+
+                        <i class="fa-solid fa-users"></i>
+
+                        <strong>
+                            8
+                        </strong>
+
+                        <span>
+                            Participants
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="info-card">
+
+                        <i class="fa-solid fa-calendar-day"></i>
+
+                        <strong>
+                            15
+                        </strong>
+
+                        <span>
+                            Date limite de cotisation
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- RAPPEL DATE LIMITE -->
+
+                <div class="content-card information-text">
+
+                    <h3>
+                        📅 Date limite
+                    </h3>
+
+                    <p>
+                        La cotisation mensuelle de
+                        <strong>300 €</strong>
+                        doit être réglée
+                        <strong>au plus tard le 15 de chaque mois.</strong>
+                    </p>
+
+                </div>
+
+
+
+                <!-- CONFIDENTIALITÉ -->
+
+                <div class="content-card information-text">
+
+                    <h3>
+                        Confidentialité
+                    </h3>
+
+                    <p>
+                        Les informations concernant les paiements
+                        individuels sont réservées à
+                        l’administrateur.
+                    </p>
+
+                    <p>
+                        Les participants peuvent consulter
+                        les bénéficiaires, les versements,
+                        l’historique général et le planning
+                        de la tontine.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
